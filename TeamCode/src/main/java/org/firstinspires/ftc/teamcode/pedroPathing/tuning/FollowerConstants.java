@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.pedroPathing.tuning;
 
 import com.acmerobotics.dashboard.config.Config;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.pathGeneration.MathFunctions;
 import org.firstinspires.ftc.teamcode.pedroPathing.pathGeneration.Point;
@@ -24,20 +23,22 @@ import org.firstinspires.ftc.teamcode.pedroPathing.util.KalmanFilterParameters;
 public class FollowerConstants {
 
     // This section is for configuring your motors
-    public static String leftFrontMotorName = "leftFront";
-    public static String leftRearMotorName = "leftRear";
-    public static String rightFrontMotorName = "rightFront";
-    public static String rightRearMotorName = "rightRear";
-
-    public static DcMotorSimple.Direction leftFrontMotorDirection = DcMotorSimple.Direction.REVERSE;
-    public static DcMotorSimple.Direction rightFrontMotorDirection = DcMotorSimple.Direction.REVERSE;
-    public static DcMotorSimple.Direction leftRearMotorDirection = DcMotorSimple.Direction.FORWARD;
-    public static DcMotorSimple.Direction rightRearMotorDirection = DcMotorSimple.Direction.FORWARD;
+    public static String leftFrontMotorName = "left_front";
+    public static String leftRearMotorName = "left_back";
+    public static String rightFrontMotorName = "right_front";
+    public static String rightRearMotorName = "right_back";
 
     // This section is for setting the actual drive vector for the front left wheel, if the robot
     // is facing a heading of 0 radians with the wheel centered at (0,0)
-    private static double xMovement = 81.34056;
-    private static double yMovement = 65.43028;
+//    private static double xMovement = 81.34056;
+//    private static double yMovement = 65.43028;
+    //Pinpoint Pure
+//    private static double xMovement = 69.94101;
+//    private static double yMovement = 42.84489;
+    //
+    private static double xMovement = 78.97073;
+    private static double yMovement = 62.44097;
+
     private static double[] convertToPolar = Point.cartesianToPolar(xMovement, -yMovement);
     public static Vector frontLeftVector = MathFunctions.normalizeVector(new Vector(convertToPolar[0], convertToPolar[1]));
 
@@ -89,7 +90,8 @@ public class FollowerConstants {
 
 
     // Mass of robot in kilograms
-    public static double mass = 10.65942;
+//    public static double mass = 10.65942;
+    public static double mass = 3.0;
 
     // Centripetal force to power scaling
     public static double centripetalScaling = 0.0005;
@@ -97,11 +99,19 @@ public class FollowerConstants {
 
     // Acceleration of the drivetrain when power is cut in inches/second^2 (should be negative)
     // if not negative, then the robot thinks that its going to go faster under 0 power
-    public static double forwardZeroPowerAcceleration = -34.62719;
+//    public static double forwardZeroPowerAcceleration = -34.62719;
+    //Pinpoint Pure
+//    public static double forwardZeroPowerAcceleration = -62.30224;
+    //
+    public static double forwardZeroPowerAcceleration = -52.37975;
 
     // Acceleration of the drivetrain when power is cut in inches/second^2 (should be negative)
     // if not negative, then the robot thinks that its going to go faster under 0 power
-    public static double lateralZeroPowerAcceleration = -78.15554;
+//    public static double lateralZeroPowerAcceleration = -78.15554;
+    //Pinpoint Pure
+//    public static double lateralZeroPowerAcceleration = -55.47808;
+    //
+    public static double lateralZeroPowerAcceleration = -57.43409;
 
     // A multiplier for the zero power acceleration to change the speed the robot decelerates at
     // the end of paths.
