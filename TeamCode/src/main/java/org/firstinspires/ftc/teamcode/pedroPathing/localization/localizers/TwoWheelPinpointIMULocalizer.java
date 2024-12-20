@@ -83,7 +83,7 @@ public class TwoWheelPinpointIMULocalizer extends Localizer {
     public TwoWheelPinpointIMULocalizer(HardwareMap map, Pose setStartPose) {
         // TODO: replace these with your encoder positions DONE
         forwardEncoderPose = new Pose(0.1, -7.7, 0);
-        strafeEncoderPose = new Pose(-3.4, -7.4, Math.toRadians(90));
+        strafeEncoderPose = new Pose(6.4, -3.6, Math.toRadians(90));
 
         hardwareMap = map;
 
@@ -241,9 +241,9 @@ public class TwoWheelPinpointIMULocalizer extends Localizer {
     public Matrix getRobotDeltas() {
         Matrix returnMatrix = new Matrix(3, 1);
         // x/forward movement
-        returnMatrix.set(0, 0, FORWARD_TICKS_TO_INCHES * (forwardEncoder.getDeltaPosition() - forwardEncoderPose.getY() * deltaRadians));
+        returnMatrix.set(0, 0, 0.003 * (forwardEncoder.getDeltaPosition() - forwardEncoderPose.getY() * deltaRadians));
         //y/strafe movement
-        returnMatrix.set(1, 0, STRAFE_TICKS_TO_INCHES * (strafeEncoder.getDeltaPosition() - strafeEncoderPose.getX() * deltaRadians));
+        returnMatrix.set(1, 0, 0.003 * (strafeEncoder.getDeltaPosition() - strafeEncoderPose.getX() * deltaRadians));
         // theta/turning
         returnMatrix.set(2, 0, deltaRadians);
         return returnMatrix;
@@ -297,4 +297,3 @@ public class TwoWheelPinpointIMULocalizer extends Localizer {
         pinpoint.resetPosAndIMU();
     }
 }
-
